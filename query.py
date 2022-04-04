@@ -60,4 +60,3 @@ def run_query():
     console.print("Last Sync: " + str(datetime.now()))
     console.print("API Response: " + str(r.status_code) + " " + r.reason)
     console.print(r.json())
-    console.print(payload)
