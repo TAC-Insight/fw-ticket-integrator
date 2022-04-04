@@ -7,7 +7,7 @@ The API will create/update/void any of the tickets posted.
 1. [Download the exe from the latest release](https://github.com/TAC-Insight/fw-ticket-integrator/releases)
 2. Create `config.json` file in the same directory as the .EXE and set the `api_key` and `dsn` vars
 3. Create `tickets.sql` file in the same directory as the .EXE
-4. Set FastWeighTicketIntegrator.exe to run at startup
+4. Set FastWeighTicketIntegrator.exe to run at startup. (Run `shell:startup` via Windows Run. Copy a shortcut to the EXE into the startup folder.)
 5. Done!
 
 ### config.json
