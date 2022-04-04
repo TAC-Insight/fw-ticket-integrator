@@ -21,7 +21,7 @@ The API will create/update/void any of the tickets posted.
 
 ### tickets.sql
 
-The `tickets.sql` file should conform to the https://api.fast-weigh.com/swagger/ui/index#!/Tickets/Tickets_Post payload body.
+The `tickets.sql` file should conform to the [FW API ticket payload body](https://api.fast-weigh.com/swagger/ui/index#!/Tickets/Tickets_Post).
 
 Field names should be renamed to match the keys in the ticket payload.
 
@@ -37,3 +37,17 @@ SELECT
 FROM Transactions
 WHERE Transactions_DateTimeTransaction >= Date()-3
 ```
+
+The above results in the following payload object:
+
+```json
+{
+  "TicketNumber": 1234,
+  "TicketDateTime": "2022-04-01 12:00:00",
+  "Customer": {
+    "CustomerID": "ABC"
+  }
+}
+```
+
+**Note**: In some cases, the nesting will go 2 or 3 levels deep. `OrderProduct_TaxCode_Code` for example.
