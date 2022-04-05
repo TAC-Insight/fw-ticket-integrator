@@ -56,10 +56,9 @@ Here's a starter script for a **Libra Access DB**:
 
 ```sql
 SELECT
-  TOP 2
   TicketNum AS TicketNumber
-  ,FORMAT( DATEADD('h', 300, Transactions_DateTimeTransaction) , 'YYYY-MM-DDThh:mm:ss') AS TicketDateTime
-  ,FORMAT( DATEADD('h', 300, Transactions_DateTimeTransaction) , 'YYYY-MM-DDThh:mm:ss') AS PrintDateTime
+  ,FORMAT( DATEADD('h', 5, Transactions_DateTimeTransaction) , 'YYYY-MM-DDThh:mm:ss') AS TicketDateTime
+  ,FORMAT( DATEADD('h', 5, Transactions_DateTimeTransaction) , 'YYYY-MM-DDThh:mm:ss') AS PrintDateTime
   ,-5 AS UTCOffset
   ,Weighmaster AS Operator
   ,Transactions_TonsGrossWeight AS GrossWeight
@@ -84,5 +83,5 @@ SELECT
   ,Products_Product_Name AS OrderProduct_Product_ProductDescription
   ,'Ton' AS OrderProduct_Product_UnitOfMeasure
 FROM Transactions
-WHERE Transactions_DateTimeTransaction >= Date()-14
+WHERE Transactions_DateTimeTransaction >= Date()-3
 ```
