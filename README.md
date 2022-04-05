@@ -5,10 +5,25 @@ The Fast-Weigh Ticket Integrator uses 32-bit ODBC connections to query compatibl
 The API will create/update/void any of the tickets posted.
 
 1. [Download the exe from the latest release](https://github.com/TAC-Insight/fw-ticket-integrator/releases)
-2. Create `config.json` file in the same directory as the .EXE and set the `api_key` and `dsn` vars
-3. Create `tickets.sql` file in the same directory as the .EXE
-4. Set FastWeighTicketIntegrator.exe to run at startup. (Run `shell:startup` via Windows Run. Copy a shortcut to the EXE into the startup folder.)
+2. Create `config.json` file in the same directory as the .exe and set the `api_key` and `dsn` vars
+3. Create `tickets.sql` file in the same directory as the .exe
+4. Set FastWeighTicketIntegrator.exe to run at startup. (Run `shell:startup` via Windows Run. Copy a shortcut to the .exe into the startup directory.)
 5. Done!
+
+Your directory should look like:
+
+```
+- config.json
+- FastWeighTicketIntegrator.exe
+- tickets.sql
+```
+
+Once the exe runs you'll also have some logs / debug files:
+
+```
+- api_payload.json
+- api_response.json
+```
 
 ### config.json
 
@@ -22,6 +37,8 @@ The API will create/update/void any of the tickets posted.
 ### tickets.sql
 
 The `tickets.sql` file should conform to the [FW API ticket payload body](https://api.fast-weigh.com/swagger/ui/index#!/Tickets/Tickets_Post).
+
+It is a simple text file with only the sql statement in it.
 
 Field names should be renamed to match the keys in the ticket payload.
 
@@ -50,7 +67,7 @@ The above results in the following payload object:
 }
 ```
 
-**Note**: In some cases, the nesting will go 2 or 3 levels deep. `OrderProduct_TaxCode_Code` for example.
+**Note**: In some cases, the nesting will go 2 or 3 levels deep. `Truck_Hauler_HaulerID` for example.
 
 Here's a starter script for a **Libra Access DB**:
 
