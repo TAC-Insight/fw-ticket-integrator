@@ -48,6 +48,10 @@ def run_query():
     # Parse the results to JSON
     payload = json.dumps(results, indent=4, sort_keys=True, default=str)
 
+    # Write payload to api_payload.json
+    with open("api_payload.json", "w") as f:
+        f.write(payload)
+
     # Post tickets to the FW API
     r = requests.post("https://api.fast-weigh.com/v2/tickets",
                       data=payload,
@@ -58,5 +62,11 @@ def run_query():
 
     # Print the API response
     console.print("Last Sync: " + str(datetime.now()))
+    console.print("Tickets Pulled: " + str(len(results)))
     console.print("API Response: " + str(r.status_code) + " " + r.reason)
-    console.print(r.json())
+    results = r.json()
+    console.print(results["Message"])
+
+    # Write the results to api_response.json
+    with open("api_response.json", "w") as f:
+        f.write(json.dumps(results, indent=4, sort_keys=True, default=str))
