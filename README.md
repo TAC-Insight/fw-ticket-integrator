@@ -2,7 +2,7 @@
 
 ![screenshot](/screenshot.png)
 
-The Fast-Weigh Ticket Integrator uses 32-bit ODBC connections to query compatible databases and post tickets to the Fast-Weigh API.
+The Fast-Weigh Ticket Integrator uses 32-bit ODBC connections to query compatible databases and post tickets to the Fast-Weigh API. It syncs tickets every 3 minutes.
 
 The API will create/update/void any of the tickets posted.
 
