@@ -1,5 +1,7 @@
 # Fast-Weigh Ticket Integrator
 
+![screenshot](/screenshot.png)
+
 The Fast-Weigh Ticket Integrator uses 32-bit ODBC connections to query compatible databases and post tickets to the Fast-Weigh API.
 
 The API will create/update/void any of the tickets posted.
@@ -102,3 +104,11 @@ SELECT
 FROM Transactions
 WHERE Transactions_DateTimeTransaction >= Date()-3
 ```
+
+### Development notes
+
+- 32-bit Python. Many of these old databases are only compatible with 32-bit applications/drivers.
+- Create virtual env: `py -m venv venv`
+- Install requirements: `pip install -r requirements.txt`
+- Dev command: `py main.py`
+- Build command: `py build.py`
