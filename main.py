@@ -6,7 +6,7 @@ from query import run_query
 run_query()
 
 # Schedule the query to run every minute
-schedule.every(1).minutes.do(run_query)
+schedule.every(3).minutes.do(run_query)
 
 # Run loop
 while True:
