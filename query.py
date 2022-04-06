@@ -8,6 +8,7 @@ from flatten_dict import unflatten
 
 
 def run_query():
+
     # Init rich console
     console = Console()
 
@@ -22,16 +23,26 @@ def run_query():
     console.print(header)
 
     # Open and parse config.json
-    with open("config.json") as config_file:
-        config = json.load(config_file)
+    try:
+        with open("config.json") as config_file:
+            config = json.load(config_file)
+    except FileNotFoundError:
+        console.print(
+            "[bold red]ERROR:[/bold red] config.json not found. Please create it in the same directory as the exe.")
+        exit()
 
     # Connect to the database
     db = pyodbc.connect("DSN="+config["dsn"])
     cursor = db.cursor()
 
     # Open the tickets.sql file
-    with open("tickets.sql", "r") as f:
-        sql = f.read()
+    try:
+        with open("tickets.sql", "r") as f:
+            sql = f.read()
+    except FileNotFoundError:
+        console.print(
+            "[bold red]ERROR:[/bold red] tickets.sql not found. Please create it in the same directory as the exe.")
+        exit()
 
     # Execute the query
     cursor.execute(sql)
