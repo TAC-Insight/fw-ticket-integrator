@@ -32,7 +32,8 @@ Once the exe runs you'll also have some logs / debug files:
 ```json
 {
   "api_key": "your-api-key-goes-here",
-  "dsn": "32-bit ODBC connection name goes here"
+  "dsn": "32-bit ODBC connection name goes here",
+  "api_environment": "production|staging"
 }
 ```
 
@@ -108,6 +109,7 @@ WHERE Transactions_DateTimeTransaction >= Date()-3
 ### Development notes
 
 - 32-bit Python. Many of these old databases are only compatible with 32-bit applications/drivers.
+- pyodbc requires Microsoft C++ Build Tools.
 - Create virtual env: `py -m venv venv`
 - Install requirements: `pip install -r requirements.txt`
 - Dev command: `py main.py`

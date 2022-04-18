@@ -16,10 +16,11 @@ def run_query():
     os.system("cls")
 
     # Print the header
-    header = ("[bold blue]================================[/bold blue] \n"
-              "[bold blue]=[/bold blue] [bold]Fast-Weigh Ticket Integrator[/bold] [bold blue]=[/bold blue] \n"
-              "[bold blue]================================[/bold blue]"
-              )
+    header = (
+        "[bold blue]================================[/bold blue] \n"
+        "[bold blue]=[/bold blue] [bold]Fast-Weigh Ticket Integrator[/bold] [bold blue]=[/bold blue] \n"
+        "[bold blue]================================[/bold blue]"
+    )
     console.print(header)
 
     # Open and parse config.json
@@ -28,11 +29,18 @@ def run_query():
             config = json.load(config_file)
     except FileNotFoundError:
         console.print(
-            "[bold red]ERROR:[/bold red] config.json not found. Please create it in the same directory as the exe.")
+            "[bold red]ERROR:[/bold red] config.json not found. Please create it in the same directory as the exe."
+        )
         exit()
 
+    # Set the web services URL based on config.json
+    if config["api_environment"] == "production":
+        url = "https://api.fast-weigh.com/v2/tickets"
+    else:
+        url = "https://fwapi-staging.azurewebsites.net/v2/tickets"
+
     # Connect to the database
-    db = pyodbc.connect("DSN="+config["dsn"])
+    db = pyodbc.connect("DSN=" + config["dsn"])
     cursor = db.cursor()
 
     # Open the tickets.sql file
@@ -41,7 +49,8 @@ def run_query():
             sql = f.read()
     except FileNotFoundError:
         console.print(
-            "[bold red]ERROR:[/bold red] tickets.sql not found. Please create it in the same directory as the exe.")
+            "[bold red]ERROR:[/bold red] tickets.sql not found. Please create it in the same directory as the exe."
+        )
         exit()
 
     # Execute the query
@@ -64,12 +73,11 @@ def run_query():
         f.write(payload)
 
     # Post tickets to the FW API
-    r = requests.post("https://api.fast-weigh.com/v2/tickets",
-                      data=payload,
-                      headers={
-                          "x-api-key": config["api_key"],
-                          "content-type": "application/json"
-                      })
+    r = requests.post(
+        url,
+        data=payload,
+        headers={"x-api-key": config["api_key"], "content-type": "application/json"},
+    )
 
     # Print the API response
     console.print("Last Sync: " + str(datetime.now()))

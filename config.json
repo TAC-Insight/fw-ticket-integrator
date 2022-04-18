@@ -1,4 +1,5 @@
 {
   "api_key": "410a141a-6306-4cde-8760-715e05913a18",
-  "dsn": "GEN3"
+  "dsn": "GEN3",
+  "api_environment": "production"
 }
