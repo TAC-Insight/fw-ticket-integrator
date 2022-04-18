@@ -96,6 +96,8 @@ SELECT
   ,Customers_Customer_Name AS Customer_CustomerName
   ,Jobs_Job_ID AS Order_ExternalOrderID
   ,Jobs_Job_Name AS Order_Description
+  ,Jobs_PO_Number AS Order_PONumber
+  ,'true' AS Order_UsePOD
   ,'U' AS OrderProduct_FreightType
   ,'U' AS OrderProduct_SurchargeType
   ,'KNOXTN' AS OrderProduct_TaxCode_Code
@@ -110,7 +112,7 @@ WHERE Transactions_DateTimeTransaction >= Date()-3
 
 - 32-bit Python. Many of these old databases are only compatible with 32-bit applications/drivers.
 - pyodbc requires Microsoft C++ Build Tools. The easiest way to get this is via the Visual Studio Installer.
-- Create virtual env: `py -m venv venv`
+- Create virtual env: `py -m venv venv` (make sure you activate the env as well)
 - Install requirements: `pip install -r requirements.txt`
 - Dev command: `py main.py`
 - Build command: `py build.py`

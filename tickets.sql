@@ -19,6 +19,8 @@ SELECT
   ,Customers_Customer_Name AS Customer_CustomerName
   ,Jobs_Job_ID AS Order_ExternalOrderID
   ,Jobs_Job_Name AS Order_Description
+  ,Jobs_PO_Number AS Order_PONumber
+  ,'true' AS Order_UsePOD
   ,'U' AS OrderProduct_FreightType
   ,'U' AS OrderProduct_SurchargeType
   ,'KNOXTN' AS OrderProduct_TaxCode_Code
@@ -26,4 +28,4 @@ SELECT
   ,Products_Product_Name AS OrderProduct_Product_ProductDescription
   ,'Ton' AS OrderProduct_Product_UnitOfMeasure
 FROM Transactions
-WHERE Transactions_DateTimeTransaction >= Date()-12
+WHERE Transactions_DateTimeTransaction >= Date()-26
