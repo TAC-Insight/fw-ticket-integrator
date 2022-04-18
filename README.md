@@ -109,7 +109,7 @@ WHERE Transactions_DateTimeTransaction >= Date()-3
 ### Development notes
 
 - 32-bit Python. Many of these old databases are only compatible with 32-bit applications/drivers.
-- pyodbc requires Microsoft C++ Build Tools.
+- pyodbc requires Microsoft C++ Build Tools. The easiest way to get this is via the Visual Studio Installer.
 - Create virtual env: `py -m venv venv`
 - Install requirements: `pip install -r requirements.txt`
 - Dev command: `py main.py`
