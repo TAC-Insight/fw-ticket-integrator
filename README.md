@@ -88,10 +88,10 @@ SELECT
   ,Mid([Trucks_Description],1,10) AS Truck_Hauler_HaulerID
   ,Trucks_Description AS Truck_Hauler_HaulerName
   ,'External' AS Truck_Hauler_HaulerType
-  ,'KNOXTN' AS TaxCode_Code
-  ,'APIRG' AS Region_RegionName
-  ,'APILC' AS Location_LocationName
-  ,'APIYD' AS Yard_YardName
+  ,'EXEMPT' AS TaxCode_Code
+  ,'DURACAP' AS Region_RegionName
+  ,'ASBURY' AS Location_LocationName
+  ,'ASBRY' AS Yard_YardName
   ,Customers_Customer_ID AS Customer_CustomerID
   ,Customers_Customer_Name AS Customer_CustomerName
   ,Jobs_Job_ID AS Order_ExternalOrderID
@@ -100,10 +100,11 @@ SELECT
   ,'true' AS Order_UsePOD
   ,'U' AS OrderProduct_FreightType
   ,'U' AS OrderProduct_SurchargeType
-  ,'KNOXTN' AS OrderProduct_TaxCode_Code
+  ,'EXEMPT' AS OrderProduct_TaxCode_Code
   ,Products_Product_ID AS OrderProduct_Product_ProductID
   ,Products_Product_Name AS OrderProduct_Product_ProductDescription
   ,'Ton' AS OrderProduct_Product_UnitOfMeasure
+  ,VoidTkt AS Void
 FROM Transactions
 WHERE Transactions_DateTimeTransaction >= Date()-3
 ```
