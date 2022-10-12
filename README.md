@@ -29,10 +29,12 @@ Once the exe runs you'll also have some logs / debug files:
 
 ### config.json
 
+You can write your own ODBC connection string in the "dsn" option, or use a 32-bit system DSN by name (preferred).
+
 ```json
 {
   "api_key": "your-api-key-goes-here",
-  "dsn": "32-bit ODBC connection name goes here",
+  "dsn": "dsn=...",
   "api_environment": "production|staging"
 }
 ```

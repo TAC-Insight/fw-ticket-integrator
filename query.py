@@ -40,7 +40,7 @@ def run_query():
         url = "https://fwapi-staging.azurewebsites.net/v2/tickets"
 
     # Connect to the database
-    db = pyodbc.connect("DSN=" + config["dsn"])
+    db = pyodbc.connect(config["dsn"])
     cursor = db.cursor()
 
     # Open the tickets.sql file
