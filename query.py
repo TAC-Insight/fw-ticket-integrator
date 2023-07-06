@@ -34,10 +34,7 @@ def run_query():
         exit()
 
     # Set the web services URL based on config.json
-    if config["api_environment"] == "production":
-        url = "https://api.fast-weigh.com/v2/tickets"
-    else:
-        url = "https://fwapi-staging.azurewebsites.net/v2/tickets"
+    url = config["api_endpoint_url"]
 
     # Connect to the database
     db = pyodbc.connect(config["dsn"])
