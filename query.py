@@ -73,7 +73,7 @@ def run_query():
     r = requests.post(
         url,
         data=payload,
-        headers={"x-api-key": config["api_key"], "content-type": "application/json"},
+        headers={"Authorization": "Bearer " + config["api_key"], "content-type": "application/json"},
     )
 
     # Print the API response
