@@ -35,7 +35,7 @@ You can write your own ODBC connection string in the "dsn" option, or use a 32-b
 {
   "api_key": "your-api-key-goes-here",
   "dsn": "dsn=...",
-  "api_endpoint_url": ""
+  "api_endpoint_url": "https://fwticketapi.azurewebsites.net/"
 }
 ```
 
