@@ -33,9 +33,9 @@ You can write your own ODBC connection string in the "dsn" option, or use a 32-b
 
 ```json
 {
-  "api_key": "your-api-key-goes-here",
-  "dsn": "dsn=...",
-  "api_endpoint_url": "https://fwticketapi.azurewebsites.net/"
+	"api_key": "your-api-key-goes-here",
+	"dsn": "dsn=...",
+	"api_endpoint_url": "https://fwticketapi.azurewebsites.net/ticket"
 }
 ```
 
@@ -64,11 +64,11 @@ The above results in the following payload object:
 
 ```json
 {
-  "TicketNumber": 1234,
-  "TicketDateTime": "2022-04-01 12:00:00",
-  "Customer": {
-    "CustomerID": "ABC"
-  }
+	"TicketNumber": 1234,
+	"TicketDateTime": "2022-04-01 12:00:00",
+	"Customer": {
+		"CustomerID": "ABC"
+	}
 }
 ```
 
