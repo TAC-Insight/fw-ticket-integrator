@@ -33,11 +33,16 @@ You can write your own ODBC connection string in the "dsn" option, or use a 32-b
 
 ```json
 {
+	"api_endpoint_url": "https://fwticketapi.azurewebsites.net/ticket",
 	"api_key": "your-api-key-goes-here",
-	"dsn": "dsn=...",
-	"api_endpoint_url": "https://fwticketapi.azurewebsites.net/ticket"
+	"api_auth_method": "bearer",
+	"dsn": "dsn=..."
 }
 ```
+
+If you're using the endpoint url [https://api.fast-weigh.com/v3/tickets](https://api.fast-weigh.com/swagger/ui/index) or [https://api.fast-weigh.com/v2/tickets](https://api.fast-weigh.com/swagger/ui/index), set the `api_auth_method` to "api-key".
+
+If you're using the endpoint url [https://fwticketapi.azurewebsites.net/ticket](https://fwticketapi.azurewebsites.net/swagger/index.html), set the `api_auth_method` to "bearer".
 
 ### tickets.sql
 

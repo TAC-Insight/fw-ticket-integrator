@@ -69,20 +69,30 @@ def run_query():
     with open("api_payload.json", "w") as f:
         f.write(payload)
 
-    # Post tickets to the FW API
-    r = requests.post(
-        url,
-        data=payload,
-        headers={"Authorization": "Bearer " + config["api_key"], "content-type": "application/json"},
-    )
+    # Post tickets to the FW API if there are new tickets
+    if len(results) != 0:
+        r = requests.post(
+            url,
+            data=payload,
+            headers={"Authorization": "Bearer " + config["api_key"], "content-type": "application/json"},
+        ) if config["api_auth_method"] == "bearer" else requests.post(
+            url,
+            data=payload,
+            headers={"x-api-key": config["api_key"], "content-type": "application/json"},
+        )
+        
+        # Print the API response
+        console.print("Last Sync: " + str(datetime.now()))
+        console.print("Tickets Pulled: " + str(len(results)))
+        console.print("API Response: " + str(r.status_code) + " " + r.reason)
+        results = r.json()
+        console.print(results["Message"])
 
-    # Print the API response
-    console.print("Last Sync: " + str(datetime.now()))
-    console.print("Tickets Pulled: " + str(len(results)))
-    console.print("API Response: " + str(r.status_code) + " " + r.reason)
-    results = r.json()
-    console.print(results["Message"])
+        # Write the results to api_response.json
+        with open("api_response.json", "w") as f:
+            f.write(json.dumps(results, indent=4, sort_keys=True, default=str))
 
-    # Write the results to api_response.json
-    with open("api_response.json", "w") as f:
-        f.write(json.dumps(results, indent=4, sort_keys=True, default=str))
+    # Print the last sync time if there are no new tickets
+    if len(results) == 0:
+        console.print("Last Sync: " + str(datetime.now()))
+        console.print("Tickets Pulled: " + str(len(results)))

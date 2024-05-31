@@ -1,5 +1,6 @@
 {
+	"api_endpoint_url": "https://fwticketapi.azurewebsites.net/ticket",
 	"api_key": "",
-	"dsn": "",
-	"api_endpoint_url": "https://fwticketapi.azurewebsites.net/ticket"
+	"api_auth_method": "bearer",
+	"dsn": ""
 }
